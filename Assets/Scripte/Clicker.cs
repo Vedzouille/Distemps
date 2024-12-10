@@ -13,10 +13,11 @@ public class Clicker : MonoBehaviour
         if (Timer != null)
         {
             Timer.CurrentTime += HitPower;
+            Debug.Log("Ajout d'une seconde");
         }
         else
         {
-            Debug.LogWarning("Aucune référence au Timer n'a été définie !");
+            Debug.Log("Aucune référence au Timer n'a été définie !");
         }
     }
 }
