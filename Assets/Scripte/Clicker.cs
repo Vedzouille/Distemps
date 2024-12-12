@@ -6,6 +6,7 @@ public class Clicker : MonoBehaviour
 {
     public float HitPower = 1f;
     public AutoClick autoClick;
+    public UiControler UiControler;
     public Timer Timer;
 
     public void Hit()
@@ -20,5 +21,8 @@ public class Clicker : MonoBehaviour
     public void AutoClickHit()
     {
         autoClick.MultiplierAutoClick();
+        autoClick.BuyAutoClick();
+        UiControler.UpdateTexte();
     }
+
 }

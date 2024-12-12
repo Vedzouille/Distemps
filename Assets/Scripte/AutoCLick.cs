@@ -9,8 +9,10 @@ public class AutoClick : MonoBehaviour
         Debug.Log($"Auto click = {AutoClickCount}");
     }
     public float AutoClickCount = 0f;
-    public float Multiplier = 1.25f;
+    public float Multiplier = 1.15f;
     public Timer timer;
+    public float Price =100f;
+    public float MultiplierPrice = 1.10f;
 
     void Update()
     {
@@ -19,16 +21,38 @@ public class AutoClick : MonoBehaviour
 
     public void MultiplierAutoClick()
     {
-        if (AutoClickCount == 0)
+        if (timer.CurrentTime > Price)
         {
-            AutoClickCount = 1;
-            Debug.Log("auto click set a 1");
+
+            if (AutoClickCount < 2)
+            {
+                AutoClickCount += 1;
+                Debug.Log("auto click a ajouter 1");
+            }
+            else
+            {
+                AutoClickCount *= Multiplier;
+                AutoClickCount = Mathf.Round(AutoClickCount * 100.0f) * 0.01f;
+                Debug.Log($"Auto click = {AutoClickCount}");
+            }
         }
         else
         {
-            AutoClickCount *= Multiplier;
-            AutoClickCount = Mathf.Round(AutoClickCount * 100.0f) * 0.01f;
-            Debug.Log($"Auto click = {AutoClickCount}");
+            Debug.Log("T'a pas assez de temps");
+        }
+    }
+    public void BuyAutoClick()
+    {
+        if (timer.CurrentTime > Price)
+        {
+            timer.CurrentTime -= Price;
+            Price *= MultiplierPrice;
+            Price = Mathf.Round(Price * 100.0f) * 0.01f;
+            Debug.Log("achat effectuer");
+        }
+        else
+        {
+            Debug.Log("T'a pas assez de temps");
         }
     }
 }

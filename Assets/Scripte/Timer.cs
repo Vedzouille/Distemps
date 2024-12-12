@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 
 public class Timer : MonoBehaviour
 {
@@ -25,12 +26,12 @@ public class Timer : MonoBehaviour
             CurrentTime -= Time.deltaTime;
             _UpdateTimerDisplay();
         }
+        //Debug.Log(CurrentTime.ToString());
     }
 
     void _UpdateTimerDisplay()
     {
-        int minutes = (int)(CurrentTime / 60);
-        int seconds = (int)(CurrentTime % 60);
-        TimerText.text = $"{minutes:00}:{seconds:00}";
+        System.TimeSpan monTS = TimeSpan.FromSeconds((double)CurrentTime);
+        TimerText.text = monTS.ToString("dd':'hh':'mm':'ss");
     }
 }
