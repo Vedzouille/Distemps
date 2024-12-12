@@ -5,7 +5,7 @@ using UnityEngine;
 public class Clicker : MonoBehaviour
 {
     public float HitPower = 1f;
-    
+    public AutoClick autoClick;
     public Timer Timer;
 
     public void Hit()
@@ -13,11 +13,12 @@ public class Clicker : MonoBehaviour
         if (Timer != null)
         {
             Timer.CurrentTime += HitPower;
-            Debug.Log("Ajout d'une seconde");
+            Debug.Log("Ajout de X seconde");
         }
-        else
-        {
-            Debug.Log("Aucune référence au Timer n'a été définie !");
-        }
+
+    }
+    public void AutoClickHit()
+    {
+        autoClick.MultiplierAutoClick();
     }
 }
