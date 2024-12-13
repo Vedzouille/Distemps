@@ -25,4 +25,15 @@ public class Clicker : MonoBehaviour
         UiControler.UpdateTexte();
     }
 
+    public void BuyClickUpgrade()
+    {
+        if (HitPower < 10)
+        {
+            HitPower += 1f;
+        }
+        else
+        {
+            HitPower *= 1.20f;
+        }
+    }
 }
