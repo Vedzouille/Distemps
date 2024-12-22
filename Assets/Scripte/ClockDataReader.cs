@@ -6,6 +6,6 @@ public class ClockDataReader : MonoBehaviour
 {
     //lire les scipte
     //prendre aux hasard un element de chaque horloge et de tiers au hasard
-    //appliquer les multiplier lier a chaque élément
-    Resources.LoadAll<ClockData> (Assets/Clock)
+    //appliquer les multiplier lier a chaque ï¿½lï¿½ment
+    //Resources.LoadAll<ClockData> (Assets/Clock)
 }
