@@ -6,6 +6,8 @@ public class LevelLoader : MonoBehaviour
 
     [SerializeField] private List<GameObject> levels;
     public int currentLevelIndex = 0;
+    public Timer timer;
+    public float Price;
     void Start()
     {
         foreach (GameObject level in levels)
@@ -20,6 +22,8 @@ public class LevelLoader : MonoBehaviour
 
     public void LoadNextLevel()
     {
+        if(timer.CurrentTime > Price)
+        {
         currentLevelIndex++;
 
         if (currentLevelIndex < levels.Count)
@@ -30,6 +34,9 @@ public class LevelLoader : MonoBehaviour
         else
         {
             Debug.Log("Tous les niveaux sont afficher");
+        }
+        timer.CurrentTime-= Price;
+        Price *= 3;
         }
     }
 }

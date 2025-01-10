@@ -8,6 +8,7 @@ public class Clicker : MonoBehaviour
     public AutoClick autoClick;
     public UiControler UiControler;
     public Timer Timer;
+    public float HitPowerPrice = 100f;
 
     public void Hit()
     {
@@ -27,13 +28,19 @@ public class Clicker : MonoBehaviour
 
     public void BuyClickUpgrade()
     {
-        if (HitPower < 10)
+        if (Timer.CurrentTime > HitPowerPrice)
         {
+            if (HitPower < 10)
+            {
             HitPower += 1f;
-        }
-        else
-        {
+            }
+            else
+            {
             HitPower *= 1.20f;
+            }
+            Timer.CurrentTime-=HitPowerPrice;
+            HitPowerPrice *=1.2f;
         }
+
     }
 }
