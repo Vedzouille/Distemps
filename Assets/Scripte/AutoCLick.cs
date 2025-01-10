@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class AutoClick : MonoBehaviour
 {
+    private ClockDataReader clockDataReader;
     public void Start()
     {
         Debug.Log($"Auto click = {AutoClickCount}");
+        clockDataReader = gameObject.GetComponent<ClockDataReader>();
     }
     public float AutoClickCount = 0f;
     public float Multiplier = 1.15f;
@@ -16,7 +19,14 @@ public class AutoClick : MonoBehaviour
 
     void Update()
     {
-        timer.CurrentTime += Time.deltaTime * AutoClickCount;
+        if (clockDataReader.ActualLoaded != null)
+        {
+            timer.CurrentTime += Time.deltaTime * AutoClickCount * clockDataReader.ActualLoaded.AutoClickMultiplier;
+        }
+        else
+        {
+            timer.CurrentTime += Time.deltaTime * AutoClickCount;
+        }
     }
 
     public void MultiplierAutoClick()

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7179fb8594e3cf4ca13900598aaf9b7, type: 3}
+  m_Name: Level 1
+  m_EditorClassIdentifier: 
+  Description: "Horloge la plus faible, octroie 50% de vitesse d'autoclick supl\xE9mentaire"
+  ClockModel: {fileID: 21300000, guid: acd78255351be114db1bfe51dff72e10, type: 3}
+  TimeSpeed: 1
+  TimePerClick: 1
+  AutoClickMultiplier: 1.5
+  AutoClick: 1.5

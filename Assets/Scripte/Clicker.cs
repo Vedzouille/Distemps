@@ -9,13 +9,26 @@ public class Clicker : MonoBehaviour
     public UiControler UiControler;
     public Timer Timer;
     public float HitPowerPrice = 100f;
+    private ClockDataReader clockDataReader;
 
+
+    void Start()
+    {
+        clockDataReader = gameObject.GetComponent<ClockDataReader>();
+    }
     public void Hit()
     {
-        if (Timer != null)
+
+        if (clockDataReader.ActualLoaded != null)
         {
-            Timer.CurrentTime += HitPower;
-            Debug.Log("Ajout de X seconde");
+            Timer.CurrentTime += HitPower * clockDataReader.ActualLoaded.TimePerClick;
+            Debug.Log("Clock multiplier pris en compte");
+        }
+        else
+        {
+           
+        Timer.CurrentTime += HitPower;
+        Debug.Log("Ajout de X seconde");
         }
 
     }
@@ -32,7 +45,7 @@ public class Clicker : MonoBehaviour
         {
             if (HitPower < 10)
             {
-            HitPower += 1f;
+                HitPower += 1f;
             }
             else
             {

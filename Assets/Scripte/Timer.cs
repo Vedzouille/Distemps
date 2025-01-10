@@ -13,8 +13,11 @@ public class Timer : MonoBehaviour
 
     public float CurrentTime;
 
+    private ClockDataReader clockDataReader;
+
     void Start()
     {
+        clockDataReader = gameObject.GetComponent<ClockDataReader>();
         CurrentTime = InitialTime;
         _UpdateTimerDisplay();
     }
@@ -23,11 +26,20 @@ public class Timer : MonoBehaviour
     {
         if (CurrentTime > 0)
         {
-            CurrentTime -= Time.deltaTime;
-            _UpdateTimerDisplay();
+            if (clockDataReader.ActualLoaded != null)
+            {
+                CurrentTime -= Time.deltaTime * clockDataReader.ActualLoaded.TimeSpeed;
+                _UpdateTimerDisplay();
+            }
+            else
+            {
+                CurrentTime -= Time.deltaTime;
+                _UpdateTimerDisplay();
+                Debug.LogWarning("ActualLoaded pas trouver");
+            }
         }
-        //Debug.Log(CurrentTime.ToString());
     }
+
 
     void _UpdateTimerDisplay()
     {
